@@ -1,0 +1,66 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Etapes Page{% endblock %}
+
+
+{% block content %}
+
+
+<div class="contaff">
+    <div class="sideRclaimSteps" >
+      <a href="{% url 'etape-reconciliat' %}" class="text-decoration-none"> <h5 style="margin-top: 15px;color: white;margin-left: 15px;"> <span>Reconicliation MP </span> </h5></a>
+      <hr>
+      <a href="{% url 'etape-pesage' %}" class="text-decoration-none"> <h5 style="color: white;margin-left: 15px;" ><span>Pesage</span> </h5></a>
+      <hr>
+      <a href="{% url 'etape-doublepesage' %}" class="text-decoration-none"> <h5 style="color: white;margin-left: 15px;"> <span>Double Pesage</span></h5></a>
+      <hr>
+      <a href="{% url 'etape-mouillage' %}" class="text-decoration-none"> <h5 style="color: white;margin-left: 15px;"> <span>Solution de mouillage</span></h5></a>
+      <hr>
+      
+      <a href="{% url 'etape-granulat' %}" class="text-decoration-none"> <h5 style="color: white; margin-left: 15px;"> <span>Granulation </span></h5></a>
+<hr>
+      <a class="text-decoration-none" href="{% url 'etape-sechage' %}" > <h5 style="margin-bottom:15px ;margin-left: 15px; color: white;"> <span>Séchage</span> </h5></a>
+      <hr>
+      <a class="text-decoration-none" href="{% url 'etape-calibrage' %}" > <h5 style="margin-bottom:15px ;margin-left: 15px; color: white;"> <span>Calibrage</span> </h5></a>
+    
+    </div>
+   
+    <div class="middleclaimSteps" >
+    
+    <a href="{% url 'etape-vrac' %}" class="text-decoration-none"> <h5 style="color: white;margin-left: 15px;margin-top: 20px;"> <span>Local Stock Poudre En Vrac </span></h5></a>
+    <hr>
+    <a href="{% url 'etape-melange' %}" class="text-decoration-none"> <h5 style="color: white; margin-top: 20px;margin-left: 15px;"><span>Mélange de Poudre</span> </h5></a>
+    <hr>
+
+    </div>
+  
+    <div class="sideLclaimSteps"  >
+        <a class="text-decoration-none" href="{% url 'etape-psf' %}" > <h5 style="margin-top:20px ; color: white;margin-left: 15px;"> <span>Stockage PSF</span> </h5></a>
+      <hr>
+      <a href="{% url 'etape-compression' %}" class="text-decoration-none"> <h5 style="color: white;margin-left: 15px;"> <span>Compression </span></h5></a>
+      <hr>     
+      <a class="text-decoration-none" href="{% url 'etape-peliculage' %}" > <h5 style="margin-bottom:15px ; color:white;margin-left: 15px;"> <span>Pelliculage</span> </h5></a>
+      <hr>
+      <a class="text-decoration-none" href="{% url 'etape-gelule' %}" > <h5 style="margin-bottom:15px ; color: white;margin-left: 15px;"> <span>Mise En Gellule</span> </h5></a>
+     
+
+
+
+    </div>
+    <div class="side"  >
+
+        <a class="text-decoration-none" href="{% url 'etape-ms' %}"> <h5 style="color: white; margin-top: 20px;margin-left: 15px;"> <span>Mise En Blistèr </span></h5></a>
+    <hr>
+        <a class="text-decoration-none" href="{% url 'etape-sachet' %}" > <h5 style="margin-bottom:15px ;margin-left: 15px; color:white;"> <span>Mise En Sachet</span> </h5></a>
+        <hr>
+        <a class="text-decoration-none" href="{% url 'etape-mf' %}" > <h5 style="margin-bottom:15px ;margin-left: 15px; color: white;"> <span>Mise En Flacon</span> </h5></a>
+
+    </div>
+
+        
+  </div>
+
+
+
+
+{% endblock %}

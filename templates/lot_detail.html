@@ -1,0 +1,1312 @@
+{% extends 'partials/base.html' %}
+{% load mathfilters %}
+{% load crispy_forms_tags %}
+{% block title %}Prodcuct Details Page{% endblock %}
+
+
+{% block content %}
+<div class="row">
+
+  <div class="contaff ">
+    
+      <div class="column">
+      <div class="concard">
+        <div class="card mb-3" style="height: auto; width: 300px; margin-top: 20px; background-color: #8b85fbdb;" >
+          <div class="row g-0">
+            <div class="col">
+                
+              <div class="card-body">
+                <h4> Historique de </h4>
+                <hr> 
+                  <h6> Produit: {{lotde.Produit}} 
+                   </h6>
+                   <h6>
+                  Code Produit:{{lotde.code_Produit}}
+                   
+                   </h6>    
+                    <h6 class="card-title ">N Lot : {{lotde.N_Lot}}</h6>
+   
+                <h6 >Date:{{lotde.entre}}
+                </h6>    
+                
+                </div>
+            </div>
+            
+          </div>
+        </div>
+        
+  <!-- #FFE4C4 -->
+  
+
+    </div>
+   
+
+
+  </div> 
+</div>    
+</div>
+<hr class="new5">
+<div class="row">
+<div class="contaff" >
+{% if pesage %}
+
+<div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height:auto; width: 300px ;margin-left: 10px;background-color: #c6c3f9; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+            <h4 style="font-size:25px ;">Pesage </h4>
+            <hr>              
+            <h6> 
+               Operateur:{{pesage.operateur}}
+              </h6>     
+
+                <h6 > Date d'entrée:{{pesage.entre}}
+                          </h6>
+        <h6 >  Date de sortie:{{pesage.sortie}}
+        </h6>
+            <h6>Quantité:{{ pesage.Quantité }}
+            </h6>
+            <h6> Matiere Non Pesée: {{ pesage.Matiere_Non_Pesée }}             </h6>
+            <h6 >Durée: {{ pesage.duree }}
+            </h6>
+    
+                    
+            
+            </div>
+            <a class="btn" href="{% url 'pesage_edit' pesage.id %}" style="margin-top: 10px; width:100px ; margin-left: 90px;" >Edit</a>
+    
+          </div>
+        
+      </div>
+    </div>
+    
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>
+
+{% else %}
+
+
+{% endif %}
+
+
+{% if dpesage %}
+
+<div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height:610px; width: 300px ;margin-left: 10px;background-color: #c6c3f9; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+            <h4>Double Pesage </h4>
+            <hr>
+              <h6 > 
+              Operateur: {{dpesage.operateur}}
+              </h6>     
+
+             <h6>Date d'entrée: {{dpesage.entre}}
+        </h6>
+        <h6 >Date de sortie:{{dpesage.sortie}}
+        </h6>
+            <h6> Quantité:{{ dpesage.Quantité }}
+            </h6>    
+            <h6>Durée: {{ dpesage.duree }}
+            </h6>
+    
+                     
+            </div>
+        </div>
+        
+      </div>
+      <a class="btn" href="{% url 'doublepesage_edit' dpesage.id %}" style="margin-top:220px ; width:100px ; margin-left: 90px;" >Edit</a>
+
+    </div>
+    
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>
+
+{% else %}
+
+
+{% endif %}
+
+{% if mouillage %}
+
+<div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height:auto; width: 300px ;margin-left: 10px;background-color: #c6c3f9; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+            <h4>Solution de mouillage </h4>
+            <hr>
+              <h6> 
+               Operateur:{{mouillage.operateur}}
+              </h6>     
+
+             <h6 >Date d'entrée:{{mouillage.entre}}
+        </h6>
+        
+        <h6>
+        Date de sortie:{{mouillage.sortie}}
+      </h6>
+            <h6> Quantité: {{ mouillage.Quantité }}
+            </h6>    
+            <h6>Durée: {{ mouillage.duree }}
+            </h6>
+    
+                     
+            </div>
+        </div>
+        
+      </div>
+      <a class="btn" href="{% url 'mouillage_edit' mouillage.id %}" style="margin-top:10px ; width:100px ; margin-left: 90px;" >Edit</a>
+
+    </div>
+    
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>
+
+{% else %}
+
+
+{% endif %}
+
+
+
+
+{% if gran %}
+
+<div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height: auto;margin-left: 10px; width: 300px;background-color: #c6c3f9; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+            <h4 >Granulation </h4>
+            <hr>
+              
+            <h6> 
+              Operateur:{{gran.Operateur}}
+              </h6>     
+  <h6>Date d'entrée:{{gran.entre}}
+        </h6>
+        <h6>Date de sortie:{{gran.sortie}}
+        </h6>
+        <h6>Durée: {{ gran.duree }}
+        </h6>
+
+              <h6> Poids des granulés calibrés: {{ gran.Poids_des_granulés_calibrés }} 
+              </h6>    
+              <h6> Poids théorique: {{ gran.Poids_théorique }} 
+              </h6>    
+            
+            <h6> 
+              Rendement:{{gran.Rendement}} %
+              </h6>     
+            
+              
+
+                <canvas id="myChart5" width="5" height="5" style="background-color: ;"></canvas>
+                <script>
+                var ctx = document.getElementById('myChart5').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Rendement'],
+                        datasets: [{
+                            label: 'Products',
+                            data: [{{gran.Rendement}},100-{{gran.Rendement}}],
+                            backgroundColor: [
+                                'rgba(105, 112, 250)',
+                                'rgb(162, 198, 255)',
+                                
+                              ],
+                            borderColor: [
+                                'rgba(105, 112, 250)',
+                                ' rgb(162, 198, 255)',
+  
+                              ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+                </script>              
+        <a class="btn" href="{% url 'granulat_edit' gran.id %}" style="margin-top:10px ; width:100px ; margin-left: 90px;" >Edit</a>
+
+</div>
+
+        </div>
+        
+      </div>
+    </div>
+    
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>
+
+{% else %}
+
+
+{% endif %}
+
+
+{% if sechage %}
+
+<div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height: auto;margin-left: 10px; width: 300px;background-color: #c6c3f9; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+            <h4 style="font-size:25px ;">Séchage </h4>
+            <hr>
+              
+            <h6> 
+               Operateur:{{sechage.Operateur}}
+              </h6>     
+              
+              <h6> 
+              Humidité: {{sechage.Humidité}} %
+                </h6>     
+                <h6> 
+                  Température: {{sechage.Température}} °C
+                    </h6> 
+                      
+                  <h6 > Date d'entrée:{{sechage.entre}}
+        </h6>
+        <h6 >Date de sortie: {{sechage.sortie}}
+        </h6>
+            <h6 >Durée: {{ sechage.duree }} </h6>    
+        <a class="btn" href="{% url 'sechage_edit' sechage.id %}" style="margin-top:10px ; width:100px ; margin-left: 90px;" >Edit</a>
+
+</div>
+
+        </div>
+        
+      </div>
+    </div>
+    
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>
+
+{% else %}
+
+
+{% endif %}
+
+{% if calibrage %}
+
+<div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height:auto; width: 300px ;margin-left: 10px;background-color: #c6c3f9; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+            <h4>Calibrage </h4>
+            <hr>
+              <h6> 
+             Operateur: {{ calibrage.Operateur }}
+              </h6>     
+
+             <h6>Tamis:{{ calibrage.Tamis }}
+        </h6>
+        <h6> Date d'entrée:{{ calibrage.entre }}
+        </h6>
+        <h6>Date de sortie: {{ calibrage.sortie }}
+        </h6>
+        <h6>Durée: {{ calibrage.duree }}
+        </h6>
+        <a class="btn" href="{% url 'calibrage_edit' calibrage.id %}" style="margin-top:330px ; width:100px ; margin-left: 90px;" >Edit</a>
+                     
+            </div>
+        </div>
+        
+      </div>
+
+    </div>
+    
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>
+
+{% else %}
+
+
+{% endif %}
+
+
+{% if rec %}
+
+<div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height: auto; width: 300px;margin-left: 10px; background-color:  #c6c3f9; margin-top: 20px;" >
+      <div class="card-body">
+        <h4 style="font-size:25px ;">Reconciliation</h4>
+        <hr>
+        
+        <h6> 
+            Exp:{{rec.dat_e}}</h6>     
+        
+          <h6>Forme:{{rec.forme}}
+          </h6>    
+          <h6 >Quantité:{{rec.quantité}}
+          
+        </h6>    
+        
+        <h6>Numero de sac: {{rec.n_sac}}
+        </h6>    
+
+        <h6>Emplacement:{{rec.emplacement}}
+        </h6>    
+        <h6>Agent:{{rec.agent}}            </h6>    
+                                
+                    
+        <h6>Date d'entrée:{{rec.entre}}
+        </h6>
+        <h6>Date de sortie:{{rec.sortie}}
+        </h6>
+        <h6>Durée: {{ rec.duree }}</h6>            
+        {% if rec.hh %}
+        
+        <h6>Sejour: {{ rec.j_stock  }}
+        
+        </h6>
+        <h6>Verificateur:{{rec.verificateur}}</h6>
+        {% else %}
+
+        <h6>Verificateur:{{rec.verificateur}}</h6>
+        {% endif %}
+        
+        
+        <h6 >Disponibilté: {{ rec.hh }} %
+        </h6>    
+
+        </div>
+
+        <canvas id="myChart10" width="5" height="5" style="background-color: ;"></canvas>
+        <script>
+        var ctx = document.getElementById('myChart10').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Quantité'],
+                datasets: [{
+                    label: 'Disponibilité',
+                    data: [{{ rec.hh }},100],
+                    backgroundColor: [
+                        'rgba(105, 112, 250)',
+                        
+                      ],
+                    borderColor: [
+                        'rgba(105, 112, 250)',
+
+                      ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        </script> 
+                <a class="btn" href="{% url 'reconciliat_edit' rec.id %}" style="margin-bottom:10px ; margin-top: 10px; width:100px ; margin-left: 90px;" >Edit</a>
+        
+    </div>
+    
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>
+
+{% else %}
+       
+
+{% endif %}
+
+</div>
+</div>
+<hr class="new5">
+<div class="row">
+<div class="contaff">
+
+
+  {% if melange %}
+
+  <div class="column">
+    <div class="concard">
+      <div class="card mb-3" style="height: auto; width: 300px ;margin-left: 10px; background-color: #c6c3f9; margin-top: 20px;" >
+        <div class="row g-0">
+          <div class="col">
+            <div class="card-body">
+              <h4 style="font-size:25px ;">Melange Finale</h4>
+              <hr>
+                
+              <h6> 
+               Operateur: {{melange.Operateur}}
+                </h6>     
+  
+                
+             <h6 > Date d'entrée: {{melange.entre}}
+        </h6>
+        <h6 >Date de sortie:{{melange.sortie}}
+        </h6>
+              <h6>  Quantité:{{ melange.Quantité }} 
+                </h6>    
+                <h6>Durée: {{ melange.duree }}
+                </h6>
+        
+
+                <h6> 
+                  Rendement:{{melange.Rendement}} %                  </h6>     
+                
+                    <canvas id="myChart6" width="5" height="5" style="background-color: ;"></canvas>
+                    <script>
+                    var ctx = document.getElementById('myChart6').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: ['Rendement'],
+                            datasets: [{
+                                label: 'Products',
+                                data: [{{melange.Rendement}},100-{{melange.Rendement}}],
+                                backgroundColor: [
+                                    'rgba(105, 112, 250)',
+                                    'rgb(162, 198, 255)',
+                                    
+                                  ],
+                                borderColor: [
+                                    'rgba(105, 112, 250)',
+                                    ' rgb(162, 198, 255)',
+        
+                                  ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                    </script>
+        
+                    <a class="btn" href="{% url 'melange_edit' melange.id %}" style="margin-top:10px ; width:100px ; margin-left: 90px;" >Edit</a>
+                
+              </div>
+
+          </div>
+          
+        </div>
+      </div>
+      
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>
+  
+  {% else %}
+  
+ 
+  {% endif %} 
+
+
+  {% if vrac %}
+
+  <div class="column">
+    <div class="concard">
+      <div class="card mb-3" style="height: auto; width: 300px; background-color: #c6c3f9; margin-top: 20px;margin-left: 10px;" >
+        <div class="card-body">
+          <h4 style="font-size:25px ;">Vrac </h4>
+          <hr>          
+          <h6> 
+              Exp:{{vrac.dat_e}}</h6>     
+          <h6>
+            <h6 >Forme:{{vrac.forme}}
+            <h6 >
+              Quantité:{{vrac.quantité}}
+            
+          </h6>    
+          
+          <h6>Numero de sac: {{vrac.n_sac}}
+          </h6>    
+  
+          <h6>Emplacement:{{vrac.emplacement}}
+          </h6>    
+          <h6>Agent:{{vrac.agent}}            </h6>    
+                                  
+                      
+          <h6>Date d'entrée:{{vrac.entre}}
+          </h6>
+          <h6>Date de sortie:{{vrac.sortie}}
+          </h6>
+          <h6>Durée: {{ vrac.duree }}</h6>            
+          {% if vrac.hh %}
+          
+          <h6 >Sejour: {{ vrac.j_stock  }}
+          
+          </h6>
+          <h6>Verificateur:{{vrac.verificateur}}</h6>
+          {% else %}
+  
+          <h6>Verificateur:{{vrac.verificateur}}</h6>
+          {% endif %}
+          
+          
+          <h6>Disponibilté: {{ vrac.hh }} %
+          </h6>    
+  
+          </div>
+          <canvas id="myChart11" width="5" height="5" style="background-color: ;"></canvas>
+          <script>
+          var ctx = document.getElementById('myChart11').getContext('2d');
+          var myChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                  labels: ['Quantité'],
+                  datasets: [{
+                      label: 'Disponibilité',
+                      data: [{{ vrac.hh }},100],
+                      backgroundColor: [
+                          'rgba(105, 112, 250)',
+                          
+                        ],
+                      borderColor: [
+                          'rgba(105, 112, 250)',
+  
+                        ],
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      y: {
+                          beginAtZero: true
+                      }
+                  }
+              }
+          });
+          </script> 
+          
+   
+          <a class="btn" href="{% url 'vrac_edit' vrac.id %}" style="margin-bottom:10px ; margin-top: 10px; width:100px ; margin-left: 90px;" >Edit</a>
+
+      </div>
+      
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>
+  
+  {% else %}
+         
+
+  
+  {% endif %}
+  
+
+
+</div>
+</div>
+<hr class="new5">
+<div class="row">
+<div class="contaff">
+
+{% if comp %}
+
+  <div class="column">
+    <div class="concard">
+      <div class="card mb-3" style="height:auto; width: 300px; background-color: #c6c3f9; margin-top: 20px;margin-left: 10px;" >
+
+      <div class="card-body">
+        <h4 style="font-size:25px ;">Compression </h4>
+        <hr>
+        <h6> 
+          Operateur:{{comp.Operateur}}
+          
+          </h6>     
+<h6>  Date d'entrée: {{comp.entre}}</h6>
+        <h6>Date de sortie:{{comp.sortie}} 
+        </h6>    
+        <h6> Quantité: {{ comp.Quantité }}
+          
+        </h6>    
+        <h6 >Durée: {{ comp.duree }}
+        </h6>
+
+        <h6>Durée Théorique:{{ comp.duree_th}}
+        </h6>    
+        <h6> 
+          Rendement:{{comp.Rendement}} %
+          </h6>     
+        
+          <h6> 
+           Cadence:{{comp.Cadence}}</h6>       
+            <canvas id="myChart4" width="5" height="5" style="background-color: ;"></canvas>
+            <script>
+            var ctx = document.getElementById('myChart4').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Rendement'],
+                    datasets: [{
+                        label: 'Products',
+                        data: [{{comp.Rendement}},100-{{comp.Rendement}}],
+                        backgroundColor: [
+                            'rgba(105, 112, 250)',
+                            'rgb(162, 198, 255)',
+                            
+                          ],
+                        borderColor: [
+                            'rgba(105, 112, 250)',
+                            ' rgb(162, 198, 255)',
+
+                          ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            </script>
+
+            <a class="btn" href="{% url 'compression_edit' comp.id %}" style="margin-bottom:10px ; margin-top: 10px; width:100px ; margin-left: 90px;" >Edit</a>
+
+          </div>
+
+      </div>
+  
+  </div>
+  
+  
+  
+  </div>
+  
+{% else %}
+  
+
+  {% endif %}  
+
+
+  {% if pl %}
+
+  <div class="column">
+    <div class="concard">
+      <div class="card mb-3" style="height:auto; width: 300px; background-color: #c6c3f9; margin-top: 20px;margin-left: 10px;" >
+        <div class="row g-0">
+          <div class="col">
+            <div class="card-body">
+              <h4 style="font-size:25px ;">Pelliculage </h4>
+              <hr>
+    
+              <h6> 
+               Operateur: {{pl.Operateur}}
+                </h6>     
+  
+                <h6>Date d'entrée: {{pl.entre}}
+        </h6>
+        <h6>Date de sortie: {{pl.sortie}}       </h6>
+              <h6> Quantité: {{ pl.Quantité }}</h6>    
+              <h6>Durée: {{ pl.duree }}
+              </h6>
+      
+
+              <h6 > Rendement:{{pl.Rendement}} %
+                </h6>     
+
+                  <canvas id="myChart3" width="5" height="5" style="background-color: ;"></canvas>
+                  <script>
+                  var ctx = document.getElementById('myChart3').getContext('2d');
+                  var myChart = new Chart(ctx, {
+                      type: 'pie',
+                      data: {
+                          labels: ['Rendement'],
+                          datasets: [{
+                              label: 'Products',
+                              data: [{{pl.Rendement}},100-{{pl.Rendement}}],
+                              backgroundColor: [
+                                  'rgba(105, 112, 250)',
+                                  'rgb(162, 198, 255)',
+                                  
+                                ],
+                              borderColor: [
+                                  'rgba(105, 112, 250)',
+                                  ' rgb(162, 198, 255)',
+    
+                                ],
+                              borderWidth: 1
+                          }]
+                      },
+                      options: {
+                          scales: {
+                              y: {
+                                  beginAtZero: true
+                              }
+                          }
+                      }
+                  });
+                  </script> 
+        <a class="btn" href="{% url 'peliculage_edit' pl.id %}" style="margin-top:10px ; width:100px ; margin-left: 90px;" >Edit</a>
+
+</div>
+
+          </div>
+          
+        </div>
+      </div>
+      
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>
+  
+{% else %}
+  
+  
+  {% endif %}  
+
+
+  {% if mg %}
+
+  <div class="column">
+    <div class="concard">
+      <div class="card mb-3" style="height: auto; width: 300px; background-color: #c6c3f9; margin-top: 20px;margin-left: 10px;" >
+        <div class="row g-0">
+          <div class="col">
+            <div class="card-body">
+              <h4 style="font-size:25px ;">Mise En Gellule </h4>
+              <hr>
+                 
+    
+              <h6> 
+                Operateur: {{mg.Operateur}}
+                </h6>     
+                <h6>Quantité:{{ mg.Quantité }}
+                </h6>    
+                <h6>Date d'entrée:{{mg.entre}}
+        </h6>
+        <h6>Date de sortie:{{mg.sortie}} 
+        
+        </h6>
+        <h6>Durée: {{ mg.duree }}
+        </h6>
+
+              <h6>Durée Théorique:{{ mg.duree_th}}
+              </h6>    
+              <h6>Rendement: {{mg.Rendement}} %
+                </h6>     
+              
+                <h6> Cadence: {{mg.Cadence}}
+                  </h6>       
+                  <canvas id="myChart2" width="5" height="5" style="background-color: ;"></canvas>
+                  <script>
+                  var ctx = document.getElementById('myChart2').getContext('2d');
+                  var myChart = new Chart(ctx, {
+                      type: 'pie',
+                      data: {
+                          labels: ['Rendement'],
+                          datasets: [{
+                              label: 'Products',
+                              data: [{{mg.Rendement}},100-{{mg.Rendement}}],
+                              backgroundColor: [
+                                  'rgba(105, 112, 250)',
+                                  'rgb(162, 198, 255)',
+                                  
+                                ],
+                              borderColor: [
+                                  'rgba(105, 112, 250)',
+                                  ' rgb(162, 198, 255)',
+    
+                                ],
+                              borderWidth: 1
+                          }]
+                      },
+                      options: {
+                          scales: {
+                              y: {
+                                  beginAtZero: true
+                              }
+                          }
+                      }
+                  });
+                  </script>
+                  <a class="btn" href="{% url 'gellule_edit' mg.id %}" style="margin-top:10px ; width:100px ; margin-left: 90px;" >Edit</a>
+         
+              
+              
+                </div>
+              
+          </div>
+          
+        </div>
+      </div>
+      
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>
+  
+{% else %}
+  
+
+  {% endif %}  
+
+  {% if psf %}
+
+  <div class="column">
+    <div class="concard">
+      <div class="card mb-3" style="height: auto; width: 300px; background-color: #c6c3f9; margin-top: 20px;margin-left: 10px;" >
+        <div class="card-body">
+          <h4 style="font-size:25px ;">Produit Semi Fini </h4>
+          <hr>
+          <h6> 
+          Exp:{{psf.dat_e}}
+          </h6>     
+          <h6>
+            <h6 >Forme:{{psf.Forme}}</h6>
+            <h6 >Quantité:{{psf.Quantité}}
+            
+          </h6>    
+          
+          <h6 >Numero de sac: {{psf.N_sac}}
+          </h6>    
+  
+          <h6>Emplacement:{{psf.Emplacement}}
+          </h6>    
+          <h6>Agent:{{psf.Agent}}            </h6>    
+                                  
+                      
+          <h6>Date d'entrée:{{psf.entre}}
+          </h6>
+          <h6>Date de sortie:{{psf.sortie}}
+          </h6>
+          <h6>Durée: {{ psf.duree }}</h6>            
+          {% if psf.hh %}
+          
+          <h6>Sejour: {{ psf.j_stock  }}
+          
+          </h6>
+          <h6 >Verificateur:{{psf.verificateur}}</h6>
+
+          {% else %}
+  
+          <h6 >Verificateur:{{psf.verificateur}}</h6>
+          {% endif %}
+          
+          
+          <h6>Disponibilté: {{ psf.hh }} %
+          </h6>    
+
+          </div>
+  <a class="btn" href="{% url 'psf_edit' psf.id %}" style="margin-bottom:10px ; margin-top: 10px; width:100px ; margin-left: 90px;" >Edit</a>
+
+      </div>
+      
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  </div>
+  
+  {% else %}
+         
+ 
+  
+  {% endif %}
+  
+  
+
+
+</div>  
+</div>
+<hr class="new5">
+<div class="row">
+<div class="contaff">
+
+  {% if ms %}
+
+  <div class="column">
+    <div class="concard">
+      <div class="card mb-3" style="height: auto; width: 300px;margin-left: 10px; background-color: #c6c3f9; margin-top: 20px;" >
+        <div class="card-body">
+          <h4 style="font-size:25px ;">Mise En Blister </h4>
+          <hr>
+            
+            <h6> 
+                Operateur:{{ms.Operateur}}
+              </h6>     
+
+         <h6>Date d'entrée:{{ms.entre}}
+        </h6>
+        <h6> Date de sortie:{{ms.sortie}}
+        </h6>
+              <h6> Quantité:{{ ms.Quantité }} 
+              </h6>    
+              <h6>Durée: {{ ms.duree }}
+              </h6>
+      
+            <h6>Durée Théorique:{{ ms.duree_th}}
+            </h6>    
+            <h6> Rendement:{{ms.Rendement}} %            </h6>     
+            
+              <h6> Cadence:{{ms.Cadence}}
+                </h6>       
+                <canvas id="myChart1" width="5" height="5" style="background-color: ;"></canvas>
+                <script>
+                var ctx = document.getElementById('myChart1').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Rendement'],
+                        datasets: [{
+                            label: 'Products',
+                            data: [{{ms.Rendement}},100-{{ms.Rendement}}],
+                            backgroundColor: [
+                                'rgba(105, 112, 250)',
+                                'rgb(162, 198, 255)',
+                                
+                              ],
+                            borderColor: [
+                                'rgba(105, 112, 250)',
+                                ' rgb(162, 198, 255)',
+  
+                              ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+                </script>
+            </div> <a class="btn" href="{% url 'ms_edit' ms.id %}" style="margin-bottom:10px ; margin-top: 10px; width:100px ; margin-left: 90px;" >Edit</a>
+
+        </div>
+      
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>
+  <div class="column">
+    <div class="concard">
+      <div class="card mb-3" style="height: 420px; width: 300px; background-color: #c6c3f9; margin-left: 30px; margin-top: 20px;" >
+        <div class="row g-0">
+          <div class="col">
+            <div class="card-body">
+              <h5 style="font-size:25px;">Secondaire </h5>
+              </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    <!-- #FFE4C4 -->
+    
+    
+    </div>
+    
+    
+    
+    </div>  
+
+  {% else %}
+  
+
+    
+  {% endif %}
+
+  {% if mf %}
+
+  <div class="column">
+    <div class="concard">
+      <div class="card mb-3" style="height: auto; width: 300px;margin-left: 10px; background-color: #c6c3f9; margin-top: 20px;" >
+        <div class="card-body">
+          <h4 style="font-size:25px ;">Mise En Flacon </h4>
+          <hr>
+            
+            <h6>  Operateur:{{mf.Operateur}}
+              </h6>     
+
+         <h6> Date d'entrée: {{mf.entre}} 
+        </h6>
+        <h6> Date de sortie: {{mf.sortie}}
+        </h6>
+              <h6 >Quantité:{{ mf.Quantité }}
+              </h6>    
+
+              <h6>Durée: {{ mf.duree }}
+              </h6>
+       
+            <h6>Durée Théorique:{{ mf.duree_th}}
+            </h6>    
+            <h6>Rendement:{{mf.Rendement}} %
+              </h6>     
+            
+              <h6> Cadence: {{mf.Cadence}}                </h6>       
+                <canvas id="myChart1" width="5" height="5" style="background-color: ;"></canvas>
+                <script>
+                var ctx = document.getElementById('myChart1').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Rendement'],
+                        datasets: [{
+                            label: 'Products',
+                            data: [{{ms.Rendement}},100-{{ms.Rendement}}],
+                            backgroundColor: [
+                                'rgba(105, 112, 250)',
+                                'rgb(162, 198, 255)',
+                                
+                              ],
+                            borderColor: [
+                                'rgba(105, 112, 250)',
+                                ' rgb(162, 198, 255)',
+  
+                              ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+                </script>
+            </div> <a class="btn" href="{% url 'mf_edit' mf.id %}" style="margin-bottom:10px ; margin-top: 10px; width:100px ; margin-left: 90px;" >Edit</a>
+
+        </div>
+      
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>
+  <div class="column">
+    <div class="concard">
+      <div class="card mb-3" style="height: 420px; width: 300px; background-color: #c6c3f9; margin-left: 30px; margin-top: 20px;" >
+        <div class="row g-0">
+          <div class="col">
+            <div class="card-body">
+              <h5 style="font-size:25px;">Secondaire </h5>
+              </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    <!-- #FFE4C4 -->
+    
+    
+    </div>
+    
+    
+    
+    </div>  
+
+  {% else %}
+  
+
+    
+  {% endif %}
+
+</div>  
+</div>
+
+<div class="row">
+  <div class="contaff">
+  
+    {% if sachet %}
+  
+    <div class="column">
+      <div class="concard">
+        <div class="card mb-3" style="height: auto; width: 300px;margin-left: 10px; background-color: #c6c3f9; margin-top: 20px;" >
+          <div class="card-body">
+            <h4 style="font-size:25px ;">Mise En Sachet </h4>
+            <hr>
+              <h6> Operateur: {{sachet.Operateur}}                </h6>     
+  
+                <h6> Date d'entrée:{{sachet.entre}}        </h6>
+        <h6>Date de sortie: {{sachet.sortie}}
+        </h6>
+              <h6 > Quantité:{{ sachet.Quantité }}
+              </h6>    
+              <h6>Durée: {{ sachet.duree }}
+              </h6>
+          
+              <h6>Durée Théorique:{{ sachet.duree_th}}
+              </h6>    
+              <h6>Rendement:{{sachet.Rendement}} %                </h6>     
+              
+                <h6> Cadence: {{sachet.Cadence}}
+                  </h6>       
+
+              </div>
+    <canvas id="myChart" width="5" height="5" style="background-color: ;"></canvas>
+              <script>
+              var ctx = document.getElementById('myChart').getContext('2d');
+              var myChart = new Chart(ctx, {
+                  type: 'pie',
+                  data: {
+                      labels: ['Rendement'],
+                      datasets: [{
+                          label: 'Products',
+                          data: [{{sachet.Rendement}},100-{{sachet.Rendement}}],
+                          backgroundColor: [
+                              'rgba(105, 112, 250)',
+                              'rgb(162, 198, 255)',
+                              
+                            ],
+                          borderColor: [
+                              'rgba(105, 112, 250)',
+                              ' rgb(162, 198, 255)',
+
+                            ],
+                          borderWidth: 1
+                      }]
+                  },
+                  options: {
+                      scales: {
+                          y: {
+                              beginAtZero: true
+                          }
+                      }
+                  }
+              });
+              </script>
+              <a class="btn" href="{% url 'sachet_edit' sachet.id %}" style="margin-bottom:10px ; margin-top: 10px; width:100px ; margin-left: 90px;" >Edit</a>
+
+</div>
+    
+    
+    
+  
+          </div>
+        
+    <!-- #FFE4C4 -->
+    
+    
+    </div>
+    
+    <div class="column">
+      <div class="concard">
+        <div class="card mb-3" style="height: 420px; width: 300px; background-color: #c6c3f9; margin-left: 30px; margin-top: 20px;" >
+          <div class="row g-0">
+            <div class="col">
+              <div class="card-body">
+                <h5 style="font-size:25px;">Secondaire </h5>
+                </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      <!-- #FFE4C4 -->
+      
+      
+      </div>
+      
+      
+      
+      </div>  
+    
+    </div>
+    
+  
+    {% else %}
+    
+
+    {% endif %}
+  
+  </div>  
+  </div>
+
+{% endblock %}

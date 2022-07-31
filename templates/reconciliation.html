@@ -1,0 +1,173 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Produit Semi Fini Page{% endblock %}
+
+
+{% block content %}
+<div class="row">
+  <div class="search " style="height:auto ; width: 275px; margin-top: 20px; margin-left: 30px; margin-bottom: 50px;" >
+
+    <form  method="GET">
+      {% csrf_token %}
+ {{myFilter.form  | crispy }}
+<button class="btn" type="submit" style="margin-top: 10px">
+  Rechercher
+</button>
+</form>
+  </div>
+
+<div class="row">
+
+  <div class="contaff ">
+    {% if recs %}
+    
+    <div class="column">
+      {% for rec in recs  %}
+      {% if rec.hh %}
+      
+      {% if rec.contr %}
+      
+      <div class="concard">
+        
+        <div class="card mb-3" style="height: auto; width: 300px;margin-left: 10px; background-color: rgb(86, 247, 86); margin-top: 20px;" >
+          <div class="card-body">
+            <h4 style="font-size:25px ;">Reconciliation</h4>
+            <hr>
+            <h5> Produit : {{rec.N_Lot.produit.Produit}}</h5> 
+                   <h5>Code Produit : {{rec.N_Lot.produit.code_Produit}}</h5> 
+                   <h5 > 
+                    Numero de Lot:{{rec.N_Lot}}
+                  </h5>
+                    <hr>
+            
+            <h6> 
+                Exp:{{rec.dat_e}}</h6>     
+            
+              <h6>Forme:{{rec.forme}}
+              </h6>    
+              <h6> 
+                Type:{{rec.Type}}</h6> 
+              <h6 >Quantité:{{rec.quantité}}
+              
+            </h6>    
+            
+            <h6>Numero de sac: {{rec.n_sac}}
+            </h6>    
+    
+            <h6>Emplacement:{{rec.emplacement}}
+            </h6>    
+            <h6>Agent:{{rec.agent}}            </h6>    
+                                    
+                        
+            <h6>Date d'entrée:{{rec.entre}}
+            </h6>
+            <h6>Date de sortie:{{rec.sortie}}
+            </h6>
+            <h6>Durée: {{ rec.duree }}</h6>            
+            {% if rec.hh %}
+            
+            <h6>Sejour: {{ rec.j_stock  }}
+            
+            </h6>
+            <h6>Verificateur:{{rec.verificateur}}</h6>
+            {% else %}
+    
+            <h6>Verificateur:{{rec.verificateur}}</h6>
+            {% endif %}
+            
+            
+            <h6 >Disponibilté: {{ rec.hh }} %
+            </h6>    
+            <a class="btn" href="{% url 'reconciliat_edit' rec.id %}" style="margin-bottom:10px ; margin-top: 10px; width:100px ; margin-left: 90px;" >Edit</a>
+
+            </div>
+        
+        </div>
+        
+    <!-- #FFE4C4 -->
+    {% else %}
+    
+    <div class="card mb-3" style="height: auto; width: 300px;margin-left: 10px; background-color: rgb(247, 94, 86); margin-top: 20px;" >
+      <div class="card-body">
+        <h4 style="font-size:25px ;">Reconciliation</h4>
+        <hr>
+        <h5> Produit : {{rec.N_Lot.produit.Produit}}</h5> 
+               <h5>Code Produit : {{rec.N_Lot.produit.code_Produit}}</h5> 
+               <h5 > 
+                Numero de Lot:{{rec.N_Lot}}
+              </h5>
+                <hr>
+        
+        <h6> 
+            Exp:{{rec.dat_e}}</h6>     
+        
+          <h6>Forme:{{rec.forme}}
+          </h6>    
+          <h6>
+            Type:{{rec.Type}} 
+          </h6>
+          <h6 >Quantité:{{rec.quantité}}
+          
+        </h6>    
+        
+        <h6>Numero de sac: {{rec.n_sac}}
+        </h6>    
+
+        <h6>Emplacement:{{rec.emplacement}}
+        </h6>    
+        <h6>Agent:{{rec.agent}}            </h6>    
+                                
+                    
+        <h6>Date d'entrée:{{rec.entre}}
+        </h6>
+        <h6>Date de sortie:{{rec.sortie}}
+        </h6>
+        <h6>Durée: {{ rec.duree }}</h6>            
+        {% if rec.hh %}
+        
+        <h6>Sejour: {{ rec.j_stock  }}
+        
+        </h6>
+        <h6>Verificateur:{{rec.verificateur}}</h6>
+        {% else %}
+
+        <h6>Verificateur:{{rec.verificateur}}</h6>
+        {% endif %}
+        
+        
+        <h6 >Disponibilté: {{ rec.hh }} %
+        </h6>    
+
+        </div>
+        
+        <a class="btn" href="{% url 'reconciliat_edit' rec.id %}" style="margin-bottom:10px ; margin-top: 10px; width:100px ; margin-left: 90px;" >Edit</a>
+
+
+    </div>
+    {% endif %}
+    </div>
+    
+    {% else %}
+
+    {% endif %}
+  {% endfor%}
+  
+    
+    </div>    
+  
+  </div>
+{% else %}
+
+{% for rec in recs  %}
+                 
+
+
+{% endfor%}
+
+
+{% endif %}
+
+</div>
+      
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Show Page{% endblock %}
+
+
+{% block content %}
+<div class="row">
+  <div class="search " style="height:auto ; width: 275px; margin-top: 20px; margin-left: 30px; margin-bottom: 50px;" >
+
+    <form  method="GET">
+      {% csrf_token %}
+ {{myFilter.form  | crispy }}
+<button class="btn" type="submit" style="margin-top: 10px">
+  Rechercher
+</button>
+</form>
+  </div>
+
+</div>
+
+  <div class="row">
+    {% if posts %}
+    
+    {% for post in posts  %}
+               
+      <div class="contaff ">
+      <div class="concard">
+        <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px; padding:5px ;" >
+          <div class="row g-0">
+            <div class="col">
+             <h5> N Lot :
+                <a href="{% url 'lot-detail' post.pk %}" style="text-decoration:none ;font-size:25px ; color:black ;"> {{post.N_Lot}}</a>
+              </h5>
+                <hr>
+                <h5 > 
+                    Code Produit: {{post.code_Produit}}
+                  </h5>     
+
+                  <h5 >  Produit: {{post.Produit}} </h5>
+                <h5 > Date: {{post.entre}}</h5>    
+                
+                </div>
+            </div>
+            
+          </div>
+        </div>
+        
+  <!-- #FFE4C4 -->
+  
+
+    </div>
+   
+
+
+  </div>       
+
+  {% endfor%}
+
+  
+{% else %}
+  
+{% endif %}
+</div>
+</div>
+      
+
+{% endblock %}

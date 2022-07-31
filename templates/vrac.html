@@ -1,0 +1,36 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Home Page{% endblock %}
+
+
+{% block content %}
+
+
+<div class="row">
+  <div class="sideRclaimSteps" style="background-color: white;">
+  </div>
+
+  <div class="middleclaimSteps" >
+      
+  <form action=""  method="POST">
+    <h4 style="margin-top:10px ;color:white;">Local Stock Produit En Vrac</h4>
+    <hr>
+    
+      {% csrf_token %}
+      {{ form | crispy }}
+
+    <input class="btn  mt-2  mb-3 " type="submit" value="Ajouter">
+          
+  </form>  
+ 
+  </div>
+
+  <div class="sideLclaimSteps" style="background-color: white;" >
+      
+
+  </div>
+  
+      
+</div>
+
+{% endblock %}

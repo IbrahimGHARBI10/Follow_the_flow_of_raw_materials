@@ -1,0 +1,956 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Show Page{% endblock %}
+
+
+{% block content %}
+<div class="row">
+  <div class="search " style="height:auto ; width: auto; margin-top: 20px; margin-left: 30px; margin-bottom: 50px;" >
+
+    <form  method="GET">
+      {% csrf_token %}
+      {{myFilter.form  | crispy }}
+
+<select name="ope" style="margin-top: 10px;">
+<option value="">Select</option>
+<option value="1">ALL</option>
+<option value="2">Compression</option>
+<option value="3">Granulation</option>
+<option value="4">Pesage</option>
+<option value="5">Double Pesage</option>
+<option value="6">Mise En Blistér</option>
+<option value="7">Mise En Sachet</option>
+<option value="8">Mise En Gellule</option>
+<option value="9">Melange</option>
+<option value="10">Séchge</option>
+<option value="11">Pelliculage</option>
+</select>
+<br>
+ <button class="btn" type="submit" style="margin-top: 10px">
+  Search
+</button>
+</form>
+
+
+  </div>
+
+</div>
+<div class="row">
+  {% if results == '1' %}
+  <div class="contaff ">
+    
+    {% if posts %}
+    
+    {% for post in posts  %}
+               
+    <div class="contaff">
+      <div class="column">
+        <div class="concard">
+          <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+            <div class="row g-0">
+              <div class="col">
+                <div class="card-body">
+                 <h4>Compression</h4> 
+                  <hr>
+                  <h5>Produit :{{post.N_Lot.produit.Produit}}</h5> 
+                      <br>
+                     <h5>Code Produit :{{post.N_Lot.produit.code_Produit}}</h5> 
+                      <br>
+                      <hr>
+                  <h5>N Lot :{{post.N_Lot}}
+                  </h5>
+                
+                  <h6 >Date Debut:{{post.entre}}  
+                  </h6>    
+                  <h6 >Date Fin:{{post.sortie}}
+                  </h6>
+                  <h5 >Rendement:{{post.Rendement}} % 
+                  </h5> 
+                  <h5 >Cadence:{{post.Cadence}}
+                  </h5>    
+                  
+                  </div>
+              </div>
+              
+            </div>
+          </div>
+          
+      <!-- #FFE4C4 -->
+      
+      
+      </div>
+      
+      
+      
+      </div>  
+      {% endfor %}
+      </div>
+  
+  {% endif %}
+  
+  {% if posts1 %}
+  {% for post1 in posts1  %}
+               
+  <div class="contaff">       
+    <div class="column">
+    <div class="concard">
+      <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+        <div class="row g-0">
+          <div class="col">
+            <div class="card-body">
+             <h4>Granulation</h4> 
+              <hr>
+              <h5>Produit :{{post1.N_Lot.produit.Produit}} </h5>
+                    <br>
+                   <h5> Code Produit :{{post1.N_Lot.produit.code_Produit}}</h5>
+                    <br>
+                    <hr>
+                  <h5>N Lot :{{post1.N_Lot}}
+                  </h5>
+                
+                  <h6 >Date Debut:{{post1.entre}}  
+                  </h6>    
+                  <h6 >Date Fin:{{post1.sortie}}
+                  </h6>
+                  <h5 >Rendement:{{post1.Rendement}} %
+              </h5> 
+                            
+              </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    <!-- #FFE4C4 -->
+    
+    
+    </div>
+    
+    
+    
+    </div>       
+    
+    {% endfor%}
+    </div>      
+
+
+{% endif %}
+
+{% if posts2 %}
+{% for post2 in posts2  %}
+<div class="contaff">       
+  <div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+           <h4>Pesage</h4> 
+            <hr>
+           <h5>Produit :   {{post2.N_Lot.produit.Produit}}</h5> 
+            <br>
+           <h5>Code Produit :   {{post2.N_Lot.produit.code_Produit}}</h5> 
+            <br>
+            <hr>
+            <h5>N Lot :{{post2.N_Lot}}
+            </h5>
+            <h6 >Date Debut:{{post2.entre}}  
+            </h6>    
+            <h6 >Date Fin:{{post2.sortie}}
+            </h6>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>       
+  
+  {% endfor%}
+  </div>
+{% endif %}
+
+{% if posts3 %}
+{% for post3 in posts3  %}
+<div class="contaff">       
+  <div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+           <h4>Double Pesage</h4> 
+            <hr>
+            <h5>Produit :{{post3.N_Lot.produit.Produit}} </h5>
+                  <br>
+                 <h5>Code Produit :{{post3.N_Lot.produit.code_Produit}}</h5> 
+                  <br>
+                  <hr>
+                  <h5>N Lot :{{post3.N_Lot}}
+                  </h5>
+                  <h6 >Date Debut:{{post3.entre}}  
+                  </h6>    
+                  <h6 >Date Fin:{{post3.sortie}}
+                  </h6>
+            
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>       
+  
+  {% endfor%}
+  </div>
+{% endif %}
+{% if posts4 %}
+{% for post4 in posts4  %}
+<div class="contaff">       
+  <div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+           <h4>Mise En Blistér</h4> 
+            <hr>
+            <h5>Produit :   {{post4.N_Lot.produit.Produit}} </h5>
+                  <br>
+                  <h5>Code Produit :   {{post4.N_Lot.produit.code_Produit}}</h5> 
+                  <br>
+                  
+                    <hr>
+                    <h5>N Lot :{{post4.N_Lot}}
+                    </h5>
+                    <h6 >Date Debut:{{post4.entre}}  
+                    </h6>    
+                    <h6 >Date Fin:{{post4.sortie}}
+                    </h6>
+            <h5 >Rendement:{{post4.Rendement}} %
+            </h5> 
+            <h5 >Cadence:{{post4.Cadence}}
+            </h5>    
+            
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>       
+  
+  {% endfor%}
+  </div>
+{% endif %}
+{% if posts5 %}
+{% for post5 in posts5  %}
+<div class="contaff">       
+  <div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+           <h4>Mise En Sachet</h4> 
+            <hr>
+            <h5>Produit :   {{post5.N_Lot.produit.Produit}} </h5>
+                  <br>
+                 <h5>Code Produit :   {{post5.N_Lot.produit.code_Produit}}</h5> 
+                  <br>
+                  <hr>
+                  <h5>N Lot :{{post5.N_Lot}}
+                  </h5>
+                  <h6 >Date Debut:{{post5.entre}}  
+                  </h6>    
+                  <h6 >Date Fin:{{post5.sortie}}
+                  </h6>
+            <h5 >Rendement:{{post5.Rendement}} % 
+            </h5> 
+            <h5 >Cadence:{{post5.Cadence}}
+            </h5>    
+            
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>       
+  
+  {% endfor%}
+  </div>
+{% endif %}
+{% if posts6 %}
+{% for post6 in posts6  %}
+<div class="contaff">       
+  <div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+           <h4>Mise En Gellule</h4> 
+            <hr>
+           <h5> Produit :   {{post6.N_Lot.produit.Produit}}</h5>
+                  <br>
+                 <h5> Code Produit :   {{post6.N_Lot.produit.code_Produit}}</h5>
+                  <br>
+                  <hr>
+                  <h5>N Lot :{{post6.N_Lot}}
+                  </h5>
+                  <h6 >Date Debut:{{post6.entre}}  
+                  </h6>    
+                  <h6 >Date Fin:{{post6.sortie}}
+                  </h6>
+            <h5 >Rendement:{{post6.Rendement}} %
+            </h5> 
+            <h5 >Cadence:{{post6.Cadence}}
+            </h5>    
+            
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>       
+  
+  {% endfor%}
+  </div>
+{% endif %}
+
+{% if posts7 %}
+{% for post7 in posts7  %}
+<div class="contaff">       
+  <div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+           <h4>Melange</h4> 
+            <hr>
+            <h5>Produit :   {{post7.N_Lot.produit.Produit}} </h5>
+                  <br>
+                 <h5>Code Produit :   {{post7.N_Lot.produit.code_Produit}}</h5> 
+                  <br>
+                  <hr>
+                  <h5>N Lot :{{post7.N_Lot}}
+                  </h5>
+                  <h6 >Date Debut:{{post7.entre}}  
+                  </h6>    
+                  <h6 >Date Fin:{{post7.sortie}}
+                  </h6>
+            <h5 >Rendement:{{post7.Rendement}} %
+            </h5> 
+            
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>       
+  
+  {% endfor%}
+  </div>
+{% endif %}
+
+{% if posts8 %}
+{% for post8 in posts8  %}
+<div class="contaff">       
+  <div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+           <h4>Sechage</h4> 
+            <hr>
+            <h5>Produit : {{post8.N_Lot.produit.Produit}} </h5>
+                  <br>
+                 <h5>Code Produit : {{post8.N_Lot.produit.code_Produit}}</h5> 
+                  <br>
+                  <hr>
+                  <h5>N Lot :{{post8.N_Lot}}
+                  </h5>
+                  <h6 >Date Debut:{{post8.entre}}  
+                  </h6>    
+                  <h6 >Date Fin:{{post8.sortie}}
+                  </h6>
+            
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>       
+  
+  {% endfor%}
+  </div>
+{% endif %}
+{% if posts9 %}
+{% for post9 in posts9  %}
+<div class="contaff">       
+  <div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+           <h4>Pelliculage</h4> 
+            <hr>
+           <h5> Produit : {{post9.N_Lot.produit.Produit}}</h5> 
+                  <br>
+                 <h5>Code Produit : {{post9.N_Lot.produit.code_Produit}}</h5> 
+                  <br>
+                  <hr>
+                  <h5>N Lot :{{post9.N_Lot}}
+                  </h5>
+                  <h6 >Date Debut:{{post9.entre}}  
+                  </h6>    
+                  <h6 >Date Fin:{{post9.sortie}}
+                  </h6>
+            <h5 >Rendement:{{post9.Rendement}} %
+            </h5> 
+           
+            
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  <!-- #FFE4C4 -->
+  
+  
+  </div>
+  
+  
+  
+  </div>       
+  
+  {% endfor%}
+  </div>
+{% endif %}
+
+
+
+  </div>
+
+
+{% elif results == '2' %}
+{% if posts %}
+    
+{% for post in posts  %}
+<div class="contaff">
+<div class="column">
+  <div class="concard">
+    <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+      <div class="row g-0">
+        <div class="col">
+          <div class="card-body">
+           <h4>Compression</h4> 
+            <hr>
+            <h5>Produit :   {{post.N_Lot.produit.Produit}}</h5> 
+                <br>
+               <h5>Code Produit :   {{post.N_Lot.produit.code_Produit}}</h5> 
+               <hr>
+               <h5>N Lot :{{post.N_Lot}}
+               </h5>
+               <h6 >Date Debut:{{post.entre}}  
+              </h6>    
+              <h6 >Date Fin:{{post.sortie}}
+              </h6>
+            <h5 >Rendement:{{post.Rendement}} % 
+            </h5> 
+            <h5 >Cadence:{{post.Cadence}}
+            </h5>    
+            
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>  
+{% endfor %}
+</div>
+{% endif %}
+
+{% elif results == '3' %}
+
+{% if posts1 %}
+{% for post1 in posts1  %}
+<div class="contaff">       
+<div class="column">
+<div class="concard">
+  <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+    <div class="row g-0">
+      <div class="col">
+        <div class="card-body">
+         <h4>Granulation</h4> 
+          <hr>
+          <h5>Produit :{{post1.N_Lot.produit.Produit}} </h5>
+                <br>
+               <h5> Code Produit :{{post1.N_Lot.produit.code_Produit}}</h5>
+                <br>
+                <hr>
+                <h5>N Lot :{{post1.N_Lot}}
+                </h5>
+                <h6 >Date Debut:{{post1.entre}}  
+                </h6>    
+                <h6 >Date Fin:{{post1.sortie}}
+                </h6>
+          <h5 >Rendement:{{post1.Rendement}} %
+          </h5> 
+          <h5 >Cadence:{{post1.Cadence}}
+          </h5>    
+          
+          </div>
+      </div>
+      
+    </div>
+  </div>
+  
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>       
+
+{% endfor%}
+</div>
+{% endif %}
+
+{% elif results == '4' %}
+
+{% if posts2 %}
+{% for post2 in posts2  %}
+<div class="contaff">       
+<div class="column">
+<div class="concard">
+  <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+    <div class="row g-0">
+      <div class="col">
+        <div class="card-body">
+         <h4>Pesage</h4> 
+          <hr>
+         <h5>Produit :   {{post2.N_Lot.produit.Produit}}</h5> 
+          <br>
+         <h5>Code Produit :   {{post2.N_Lot.produit.code_Produit}}</h5> 
+          <br>
+          <hr>
+                  <h5>N Lot :{{post2.N_Lot}}
+                  </h5>
+                  <h6 >Date Debut:{{post2.entre}}  
+                  </h6>    
+                  <h6 >Date Fin:{{post2.sortie}}
+                  </h6>
+          </div>
+      </div>
+      
+    </div>
+  </div>
+  
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>       
+
+{% endfor%}
+</div>
+{% endif %}
+
+{% elif results == '5' %}
+
+{% if posts3 %}
+{% for post3 in posts3  %}
+<div class="contaff">       
+<div class="column">
+<div class="concard">
+  <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+    <div class="row g-0">
+      <div class="col">
+        <div class="card-body">
+         <h4>Double Pesage</h4> 
+          <hr>
+          <h5>Produit :{{post3.N_Lot.produit.Produit}} </h5>
+                <br>
+               <h5>Code Produit :{{post3.N_Lot.produit.code_Produit}}</h5> 
+                <br>
+                <hr>
+                <h5>N Lot :{{post3.N_Lot}}
+                </h5>
+                <h6 >Date Debut:{{post3.entre}}  
+                </h6>    
+                <h6 >Date Fin:{{post3.sortie}}
+                </h6>
+          
+          </div>
+      </div>
+      
+    </div>
+  </div>
+  
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>       
+
+{% endfor%}
+</div>
+{% endif %}
+
+{% elif results == '6' %}
+
+{% if posts4 %}
+{% for post4 in posts4  %}
+<div class="contaff">       
+<div class="column">
+<div class="concard">
+  <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+    <div class="row g-0">
+      <div class="col">
+        <div class="card-body">
+         <h4>Mise En Blistér</h4> 
+          <hr>
+          <h5>Produit :   {{post4.N_Lot.produit.Produit}} </h5>
+                <br>
+                <h5>Code Produit :   {{post4.N_Lot.produit.code_Produit}}</h5> 
+                <br>
+                <hr>
+                <h5>N Lot :{{post4.N_Lot}}
+                </h5>
+                <h6 >Date Debut:{{post4.entre}}  
+                </h6>    
+                <h6 >Date Fin:{{post4.sortie}}
+                </h6>
+          <h5 >Rendement:{{post4.Rendement}} %
+          </h5> 
+          <h5 >Cadence:{{post4.Cadence}}
+          </h5>    
+          
+          </div>
+      </div>
+      
+    </div>
+  </div>
+  
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>       
+
+{% endfor%}
+</div>
+{% endif %}
+
+{% elif results == '7' %}
+
+{% if posts5 %}
+{% for post5 in posts5  %}
+<div class="contaff">       
+<div class="column">
+<div class="concard">
+  <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+    <div class="row g-0">
+      <div class="col">
+        <div class="card-body">
+         <h4>Mise En Sachet</h4> 
+          <hr>
+          <h5>Produit :   {{post5.N_Lot.produit.Produit}} </h5>
+                <br>
+               <h5>Code Produit :   {{post5.N_Lot.produit.code_Produit}}</h5> 
+                <br>
+                <hr>
+                  <h5>N Lot :{{post5.N_Lot}}
+                  </h5>
+                  <h6 >Date Debut:{{post5.entre}}  
+                  </h6>    
+                  <h6 >Date Fin:{{post5.sortie}}
+                  </h6>
+          <h5 >Rendement:{{post5.Rendement}} % 
+          </h5> 
+          <h5 >Cadence:{{post5.Cadence}}
+          </h5>    
+          
+          </div>
+      </div>
+      
+    </div>
+  </div>
+  
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>       
+
+{% endfor%}
+</div>
+{% endif %}
+
+{% elif results == '8' %}
+
+{% if posts6 %}
+{% for post6 in posts6  %}
+<div class="contaff">       
+<div class="column">
+<div class="concard">
+  <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+    <div class="row g-0">
+      <div class="col">
+        <div class="card-body">
+         <h4>Mise En Gellule</h4> 
+          <hr>
+         <h5> Produit :   {{post6.N_Lot.produit.Produit}}</h5>
+                <br>
+               <h5> Code Produit :   {{post6.N_Lot.produit.code_Produit}}</h5>
+                <br>
+                <hr>
+                <h5>N Lot :{{post6.N_Lot}}
+                </h5>
+                <h6 >Date Debut:{{post6.entre}}  
+                </h6>    
+                <h6 >Date Fin:{{post6.sortie}}
+                </h6>
+          <h5 >Rendement:{{post6.Rendement}} %
+          </h5> 
+          <h5 >Cadence:{{post6.Cadence}}
+          </h5>    
+          
+          </div>
+      </div>
+      
+    </div>
+  </div>
+  
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>       
+
+{% endfor%}
+</div>
+{% endif %}
+
+{% elif results == '9' %}
+
+{% if posts7 %}
+{% for post7 in posts7  %}
+<div class="contaff">       
+<div class="column">
+<div class="concard">
+  <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+    <div class="row g-0">
+      <div class="col">
+        <div class="card-body">
+         <h4>Melange</h4> 
+          <hr>
+          <h5>Produit :   {{post7.N_Lot.produit.Produit}} </h5>
+                <br>
+               <h5>Code Produit :   {{post7.N_Lot.produit.code_Produit}}</h5> 
+                <br>
+                <hr>
+                  <h5>N Lot :{{post7.N_Lot}}
+                  </h5>
+                  <h6 >Date Debut:{{post7.entre}}  
+                  </h6>    
+                  <h6 >Date Fin:{{post7.sortie}}
+                  </h6>
+          <h5 >Rendement:{{post7.Rendement}} %
+          </h5> 
+          
+          </div>
+      </div>
+      
+    </div>
+  </div>
+  
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>       
+
+{% endfor%}
+</div>
+{% endif %}
+
+{% elif results == '10' %}
+
+{% if posts8 %}
+{% for post8 in posts8  %}
+<div class="contaff">       
+<div class="column">
+<div class="concard">
+  <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+    <div class="row g-0">
+      <div class="col">
+        <div class="card-body">
+         <h4>Sechage</h4> 
+          <hr>
+          <h5>Produit : {{post8.N_Lot.produit.Produit}} </h5>
+                <br>
+               <h5>Code Produit : {{post8.N_Lot.produit.code_Produit}}</h5> 
+                <br>
+                <hr>
+                  <h5>N Lot :{{post8.N_Lot}}
+                  </h5>
+                  <h6 >Date Debut:{{post8.entre}}  
+                  </h6>    
+                  <h6 >Date Fin:{{post8.sortie}}
+                  </h6>
+          </div>
+      </div>
+      
+    </div>
+  </div>
+  
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>       
+
+{% endfor%}
+</div>
+{% endif %}
+
+{% elif results == '11' %}
+
+{% if posts9 %}
+{% for post9 in posts9  %}
+<div class="contaff">       
+<div class="column">
+<div class="concard">
+  <div class="card mb-3" style="height: auto; width: 300px;background-color: #b9b5f3f5 ; margin-left: 30px; margin-top: 20px;" >
+    <div class="row g-0">
+      <div class="col">
+        <div class="card-body">
+         <h4>Pelliculage</h4> 
+          <hr>
+         <h5> Produit : {{post9.N_Lot.produit.Produit}}</h5> 
+                
+               <h5>Code Produit : {{post9.N_Lot.produit.code_Produit}}</h5> 
+                <hr>
+                <h5>N Lot :{{post9.N_Lot}}
+                </h5>
+                <h6 >Date Debut:{{post9.entre}}  
+                </h6>    
+                <h6 >Date Fin:{{post9.sortie}}
+                </h6>
+          <h5 >Rendement:{{post9.Rendement}} %
+          </h5> 
+          
+          </div>
+      </div>
+      
+    </div>
+  </div>
+  
+<!-- #FFE4C4 -->
+
+
+</div>
+
+
+
+</div>       
+
+{% endfor%}
+</div>
+{% endif %}
+
+{% endif %}
+</div>
+      
+</div>
+{% endblock %}
